@@ -38,6 +38,7 @@ setup(
         'Flask-SQLAlchemy==0.16',
         'Flask==0.10',
         'lxml==3.1beta1',
+        'msgpack-python==0.4.2',
         'mutagen==1.21',
         'pyLast==0.5.11',
         'python-dateutil==2.1',
