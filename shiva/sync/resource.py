@@ -1,7 +1,18 @@
 # -*- coding: utf-8 -*-
 from flask.ext.restful import Resource, Response
+import msgpack
 
 from shiva.auth import Roles, ACLMixin
+# from shiva.sync.decorators import binary
+
+
+def binary(func):
+    def wrapped(*args, **kwargs):
+        response = func(*args, **kwargs)
+
+        return BinaryResponse(response)
+
+    return wrapped
 
 
 class BinaryResponse(Response):
@@ -20,5 +31,6 @@ class SyncResource(Resource, ACLMixin):
     """
     allow = [Roles.SHIVA]
 
+    @binary
     def get(self):
         return {}
